@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pookie Period Tracker — Modern</title>
+    <meta name="description" content="A simple, private period & ovulation tracker that runs fully in your browser." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header container">
+      <h1 class="brand">Pookie Period Tracker</h1>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-secondary" aria-label="Toggle dark mode" title="Toggle theme"></button>
+        <button id="resetBtn" class="btn btn-ghost" title="Clear saved data">Reset</button>
+      </div>
+    </header>
+
+    <main class="container grid">
+      <section class="card">
+        <h2 class="card-title">Enter your details</h2>
+        <form id="trackerForm" novalidate>
+          <div class="field">
+            <label for="startDate">Last period start date <span class="req">*</span></label>
+            <input type="date" id="startDate" required />
+            <small class="hint">Select the first day of your most recent period.</small>
+          </div>
+
+          <div class="field">
+            <label for="cycleLength">Cycle length (days) <span class="req">*</span></label>
+            <input type="number" id="cycleLength" value="28" min="20" max="40" required inputmode="numeric" />
+            <small class="hint">Most people are between 21–35 days. Default is 28.</small>
+          </div>
+
+          <div class="field">
+            <label for="periodLength">Period length (days) <span class="req">*</span></label>
+            <input type="number" id="periodLength" value="5" min="2" max="10" required inputmode="numeric" />
+            <small class="hint">Typical range is 2–7 days.</small>
+          </div>
+
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3" placeholder="Add symptoms, mood or anything you'd like to remember."></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn">Track my cycle</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="result" class="card" hidden>
+        <h2 class="card-title">Your prediction</h2>
+        <div id="summary" class="summary"></div>
+        <div class="divider"></div>
+        <h3 class="subheading">Next 6 months</h3>
+        <div id="multiMonths" class="months"></div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <p>All calculations happen locally in your browser. No data leaves your device.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
